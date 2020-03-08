@@ -5,28 +5,48 @@ import { muscles, exercises } from '../store';
 
 export default class extends Component {
   state = {
-    exercises
+    exercises,
+    category: ''
   };
   getExercisesByMuscles() {
     return Object.entries(
-      this.state.exercises.reduce((exercises, exercise) => {
+      this.state.exercises.reduce((exercisesByMuscles, exercise) => {
         const { muscles } = exercise;
-        exercises[muscles] = exercises[muscles]
-          ? [...exercises[muscles], exercise]
+        exercisesByMuscles[muscles] = exercisesByMuscles[muscles]
+          ? [...exercisesByMuscles[muscles], exercise]
           : [exercise];
 
-        return exercises;
+        return exercisesByMuscles;
       }, {})
     );
   }
 
+  handleCategorySelection = category => {
+    this.setState({
+      category
+    });
+  };
+
+  handleExerciseSelection = (id) => {
+    this.setState()
+  }
+
   render() {
     const exercises = this.getExercisesByMuscles();
+    const { category } = this.state;
     return (
       <div>
         <Header />
-        <Exercises exercises={exercises} />
-        <Footer muscles={muscles} />
+        <Exercises
+          exercises={exercises}
+          category={category}
+          onSelect={this.handleExerciseSelection}
+        />
+        <Footer
+          muscles={muscles}
+          category={category}
+          onSelect={this.handleCategorySelection}
+        />
       </div>
     );
   }
