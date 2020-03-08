@@ -73,25 +73,28 @@ export const exercises = [
   {
     id: uuidv4(),
     title: 'Supine straight-leg',
-    description: 'Abdoment exercise...',
+    description: 'Abdominal exercise...',
     muscles: 'abdomen'
   },
   {
     id: uuidv4(),
     title: 'Hanging bent-leg.',
-    description: 'Abdoment exercise...',
+    description:
+      'The hanging knee raise is a beginner level bodyweight core exercise that can be performed using a pull up bar, wood rings, parallette',
     muscles: 'abdomen'
   },
   {
     id: uuidv4(),
     title: 'Supine bent-leg',
-    description: 'Abdoment exercise...',
+    description:
+      'Supine. Lie on your back on a hard surface, preferably the floor. ... Bend your knees and put your feet flat on the floor. Inhale, and keeping the angle of your bent knee the same throughout the movement, lift your lower extremity.',
     muscles: 'abdomen'
   },
   {
     id: uuidv4(),
     title: 'Cross knee crunch',
-    description: 'Abdoment exercise...',
+    description:
+      'Lie flat on your back with your knees bent. 2. Cross your right leg on top of the left knee, and support your head with the left hand. 3. Crunch and bring your ...',
     muscles: 'abdomen'
   }
 ];

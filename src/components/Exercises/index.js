@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import {
   Grid,
   Paper,
@@ -17,14 +17,25 @@ const styles = {
   }
 };
 
-export default ({ exercises, category }) => {
+export default ({
+  exercises,
+  category,
+  exercise: {
+    id,
+    title = 'Welcome!',
+    description = 'Please select an exercise.'
+  },
+  onSelect
+}) => {
+  const handleOnClick = id => onSelect(id);
+
   return (
     <Grid container>
       <Grid item xs={12} sm={6}>
         <Paper style={styles.Paper}>
           {exercises.map(([group, exercises]) =>
             !category || category === group ? (
-              <div key={group}>
+              <Fragment key={group}>
                 <Typography
                   variant={'h6'}
                   style={{ textTransform: 'capitalize' }}
@@ -33,22 +44,24 @@ export default ({ exercises, category }) => {
                 </Typography>
                 <List component="div" disablePadding>
                   {exercises.map(e => (
-                    <ListItem button key={e.id}>
+                    <ListItem
+                      button
+                      key={e.id}
+                      onClick={() => handleOnClick(e.id)}
+                    >
                       <ListItemText primary={e.title} />
                     </ListItem>
                   ))}
                 </List>
-              </div>
+              </Fragment>
             ) : null
           )}
         </Paper>
       </Grid>
       <Grid item xs={12} sm={6}>
         <Paper style={styles.Paper}>
-          <Typography variant="h4">Welcome!</Typography>
-          <Typography style={{ marginTop: 20 }}>
-            Please select an exercise.
-          </Typography>
+          <Typography variant="h4">{title}</Typography>
+          <Typography style={{ marginTop: 20 }}>{description}</Typography>
         </Paper>
       </Grid>
     </Grid>
